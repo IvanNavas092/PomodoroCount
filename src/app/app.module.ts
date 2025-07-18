@@ -3,14 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './Components/shared.module';
+import { CountSectionComponent } from './Sections/count-section/count-section.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CountSectionComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
