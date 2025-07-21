@@ -1,10 +1,14 @@
 <div class="flex gap-4">
-  <button *ngFor="let item of list; let i = index" (click)="toggleoption(i)" type="button"
-    class="px-4 py-2 font-bold border rounded-full transition-all"
-     [ngClass]="{
-      'bg-black text-white': item.isActive,
-      'bg-white text-black border-black hover:bg-white hover:text-black': !item.isActive
-    }">
-    {{ item.text }}
+  <button
+    *ngFor="let mode of modes; let i = index"
+    (click)="onSelect(mode)"
+    type="button"
+    class="px-4 py-2 font-bold border rounded-full transition-all border-white shadow-xl hover:shadow-2xl text-xl"
+    [ngClass]="{
+      'bg-white text-black': mode === selectedMode,
+      'bg-transparent text-white  hover:bg-white hover:text-black': mode !== selectedMode
+    }"
+  >
+    {{ mode.label }}
   </button>
 </div>
