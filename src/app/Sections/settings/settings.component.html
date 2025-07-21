@@ -1,0 +1,7 @@
+<app-bg></app-bg>
+<!-- Button settings -->
+
+<app-modal-background
+  *ngIf="modalBackgroundService.isOpen$ | async"
+  (close)="closeModalSettings()"
+></app-modal-background>
