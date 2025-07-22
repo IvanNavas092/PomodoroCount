@@ -21,8 +21,25 @@
       />
     </svg>
   </button>
+
+  <div class="flex border-b border-gray-700 mt-12 mx-12">
+    <button
+      *ngFor="let tab of tabs"
+      class="px-4 py-2 font-medium text-sm focus:outline-none"
+      [class.text-blue-400]="isActiveTab(tab)"
+      [class.text-gray-400]="!isActiveTab(tab)"
+      [class.border-b-2]="isActiveTab(tab)"
+      [class.border-blue-400]="isActiveTab(tab)"
+      (click)="setActiveTab(tab)"
+    >
+      {{ tab }}
+    </button>
+  </div>
+
+  <!-- Content -->
   <div class="m-12">
     <ul
+      *ngIf="activeTab === 'Backgrounds'"
       class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 p-4"
     >
       <li *ngFor="let bg of listOfBgs; trackBy: trackByFn">
@@ -37,5 +54,9 @@
         ></app-box-bg>
       </li>
     </ul>
+
+    <div *ngIf="activeTab === 'Settings'">
+      <p>Settings</p>
+    </div>
   </div>
 </div>

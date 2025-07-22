@@ -22,7 +22,7 @@ export class ModalBackgroundComponent {
   }
 
   // change tab
-  changeTab(tab: string) {
+  setActiveTab(tab: string) {
     this.activeTab = tab;
   }
 
