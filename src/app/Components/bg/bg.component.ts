@@ -1,22 +1,27 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Background } from 'src/app/interfaces/background';
 import { ModalBackgroundService } from 'src/app/Services/modal-background.service';
+import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-bg',
   templateUrl: './bg.component.html'
 })
-export class BgComponent implements OnInit {
+export class BgComponent implements OnInit, AfterViewInit {
   constructor(private modalBackgroundService: ModalBackgroundService) {}
 
   selectedBg: Background | null = null;
 
-  ngOnInit(): void {
-    this.updateBg();
-  }
+  @ViewChild('videoBg') videoRef!: ElementRef<HTMLVideoElement>;
 
-  updateBg() {
-    this.modalBackgroundService.backgroundSelected$.subscribe(data => {
+  ngOnInit(): void {
+    this.modalBackgroundService.backgroundSelected$.subscribe((data: Background) => {
       this.selectedBg = data;
     });
+  }
+
+  ngAfterViewInit(): void {
+    const video = this.videoRef.nativeElement;
+    video.muted = true;
   }
 }
