@@ -1,18 +1,37 @@
 <div
-  class="group bg-white/90 backdrop-blur-sm flex flex-col cursor-pointer items-center justify-center rounded-xl p-3 shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out border border-gray-200 hover:border-gray-300 overflow-hidden transform hover:-translate-y-1"
+  class="group bg-white/90 backdrop-blur-sm flex flex-col cursor-pointer items-center justify-center rounded-xl shadow-xl hover:shadow-2xl transition-all duration-50 ease-in-out border border-gray-200 hover:border-gray-300 overflow-hidden"
 >
-  <div class="relative overflow-hidden rounded-lg w-full">
-    <img
-      [src]="image"
-      alt="background"
-      class="w-full h-40 object-cover rounded-lg transition-transform duration-500 group-hover:scale-105"
-      loading="lazy"
-    />
+  <div class="relative overflow-hidden rounded-lg">
+    <ng-container *ngIf="image; else videoBlock">
+      <img
+        [src]="image"
+        [srcset]="
+          getOptimizedImage(image, 300) + ' 300w, ' + getOptimizedImage(image, 600) + ' 600w'
+        "
+        sizes="(max-width: 640px) 300px, 600px"
+        alt="background"
+        class="w-full h-40 object-cover rounded-lg transition-transform duration-50 group-hover:scale-102"
+        loading="lazy"
+      />
+    </ng-container>
+
+    <ng-template #videoBlock>
+      <video
+        class="object-cover w-full h-40 rounded-lg"
+        [poster]="getOptimizedVideo(video, 300) + '.jpg'"
+        [src]="getOptimizedVideo(video, 300)"
+        preload="metadata"
+        autoplay
+        loop
+        muted
+        playsinline
+      ></video>
+    </ng-template>
     <div
-      class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-all duration-300 rounded-lg"
+      class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-all duration-50 rounded-lg"
     ></div>
   </div>
-  <p class="text-gray-700 font-medium mt-3 text-center text-sm tracking-tight px-2">
+  <p class="text-gray-700 font-medium mt-3 text-center text-sm px-2">
     {{ label }}
   </p>
   <div

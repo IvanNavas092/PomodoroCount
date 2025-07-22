@@ -1,90 +1,39 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Background } from '../interfaces/background';
+import { backgroundsList } from '../utils/lists';
 
 @Injectable()
 export class ModalBackgroundService {
+  private backgroundSelectedSubject = new BehaviorSubject<Background>(
+    ModalBackgroundService.getInitialBackground()
+  );
+  backgroundSelected$ = this.backgroundSelectedSubject.asObservable();
+
   // open the settings modal
   private isOpenSubject = new BehaviorSubject<boolean>(false);
   isOpen$ = this.isOpenSubject.asObservable();
 
-  // selected background
-  private backgroundsList: Background[] = [
-    {
-      name: 'focus',
-      image: 'assets/bgs/london.jpg',
-      label: 'focus'
-    },
-    {
-      name: 'study',
-      image: 'assets/bgs/study.jpg',
-      label: 'Study'
-    },
-    {
-      name: 'chill',
-      image: 'assets/bgs/chill.jpg',
-      label: 'Chill'
-    },
-    {
-      name: 'night',
-      image: 'assets/bgs/night.jpg',
-      label: 'Night'
-    },
-    {
-      name: 'vacation',
-      image: 'assets/bgs/vacation.jpg',
-      label: 'Vacation'
-    },
-    {
-      name: 'lo-fi',
-      image: 'assets/bgs/lo-fi.jpg',
-      label: 'Lo-Fi	'
-    },
-    {
-      name: 'nature',
-      image: 'assets/bgs/nature.jpg',
-      label: 'Nature'
-    },
-    {
-      name: 'fire',
-      image: 'assets/bgs/fire.jpg',
-      label: 'Fire'
-    },
-    {
-      name: 'minimal',
-      image: 'assets/bgs/minimal.jpg',
-      label: 'Minimal'
-    },
-    {
-      name: 'fire',
-      image: 'assets/bgs/fire.jpg',
-      label: 'Fire'
-    },
-    {
-      name: 'cyber',
-      image: 'assets/bgs/cyber.jpg',
-      label: 'Cyber'
-    },
-    {
-      name: 'anime',
-      image: 'assets/bgs/anime.jpg',
-      label: 'Anime'
-    },
-    {
-      name: 'space',
-      image: 'assets/bgs/space.jpg',
-      label: 'Space'
-    }
-  ];
-  private backgroundSelectedSubject = new BehaviorSubject<Background>(this.backgroundsList[0]);
-  backgroundSelected$ = this.backgroundSelectedSubject.asObservable();
-
   // list of backgrounds
-  backgrounds$ = new BehaviorSubject<Background[]>(this.backgroundsList);
+  backgrounds$ = new BehaviorSubject<Background[]>(backgroundsList);
+
+  constructor() {}
+  // getInitial background
+  static getInitialBackground(): Background {
+    try {
+      const stored = localStorage.getItem('background');
+      return stored ? JSON.parse(stored) : backgroundsList[0];
+    } catch (error) {
+      console.warn('Error al leer el fondo del localStorage. Usando fondo por defecto.', error);
+      return backgroundsList[0];
+    }
+  }
 
   // select the background
   selectBackground(background: Background) {
     this.backgroundSelectedSubject.next(background);
+    localStorage.setItem('background', JSON.stringify(background));
+    this.closeModal();
   }
 
   // open the modal (settings)
@@ -95,7 +44,7 @@ export class ModalBackgroundService {
   closeModal() {
     this.isOpenSubject.next(false);
   }
-
+  // toggle the modal (settings)
   toggleModal() {
     this.isOpenSubject.next(!this.isOpenSubject.value);
   }

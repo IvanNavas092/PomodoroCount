@@ -1,5 +1,6 @@
 export interface Background {
-    name: string;
-    image: string;
-    label: string;
+  name: string;
+  label: string;
+  image: string;
+  video?: string;
 }

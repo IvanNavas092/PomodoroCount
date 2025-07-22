@@ -3,12 +3,14 @@
     *ngFor="let mode of modes; let i = index"
     (click)="onSelect(mode)"
     type="button"
-    class="px-4 py-2 font-bold border rounded-full transition-all border-white shadow-xl hover:shadow-2xl text-xl"
+    class="px-4 py-2 border rounded-full transition-all border-white shadow-xl hover:shadow-2xl drop-shadow-2xl"
     [ngClass]="{
       'bg-white text-black': mode === selectedMode,
       'bg-transparent text-white  hover:bg-white hover:text-black': mode !== selectedMode
     }"
   >
-    {{ mode.label }}
+    <span class="font-bold text-xl drop-shadow-3xl">
+      {{ mode.label }}
+    </span>
   </button>
 </div>

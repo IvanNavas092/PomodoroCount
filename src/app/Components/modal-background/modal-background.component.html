@@ -1,5 +1,5 @@
 <div
-  class="justify-center items-center bg-gray-900 bg-opacity-50 absolute top-0 left-0 w-full h-full z-10"
+  class="justify-center items-center bg-slate-900 bg-opacity-90 absolute top-0 left-0 w-full h-full z-10 overflow-y-scroll"
 >
   <!-- list -->
   <button (click)="closeModal()" class="fixed top-0 right-0 p-4">
@@ -21,14 +21,32 @@
       />
     </svg>
   </button>
+
+  <div class="flex border-b border-gray-700 mt-12 mx-12">
+    <button
+      *ngFor="let tab of tabs"
+      class="px-4 py-2 font-medium text-sm focus:outline-none"
+      [class.text-blue-400]="isActiveTab(tab)"
+      [class.text-gray-400]="!isActiveTab(tab)"
+      [class.border-b-2]="isActiveTab(tab)"
+      [class.border-blue-400]="isActiveTab(tab)"
+      (click)="setActiveTab(tab)"
+    >
+      {{ tab }}
+    </button>
+  </div>
+
+  <!-- Content -->
   <div class="m-12">
     <ul
+      *ngIf="activeTab === 'Backgrounds'"
       class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 p-4"
     >
       <li *ngFor="let bg of listOfBgs; trackBy: trackByFn">
         <app-box-bg
           [image]="bg.image"
           [label]="bg.label"
+          [video]="bg.video ? bg.video : ''"
           class="block h-full cursor-pointer transition-transform hover:scale-[1.02] active:scale-[0.98]"
           role="button"
           tabindex="0"
@@ -36,5 +54,9 @@
         ></app-box-bg>
       </li>
     </ul>
+
+    <div *ngIf="activeTab === 'Settings'">
+      <p>Settings</p>
+    </div>
   </div>
 </div>

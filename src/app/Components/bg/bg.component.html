@@ -2,5 +2,21 @@
   *ngIf="selectedBg"
   class="bg-cover bg-center bg-no-repeat fixed top-0 left-0 w-full h-full -z-10"
 >
-  <img [src]="selectedBg.image" alt="background" class="w-full h-full" />
+  <!-- video -->
+  <ng-container *ngIf="selectedBg.video; else showImage">
+    <video
+      #videoBg
+      class="object-cover w-full h-full"
+      [src]="selectedBg.video"
+      autoplay
+      loop
+      muted
+      playsinline
+    ></video>
+  </ng-container>
+
+  <!-- image -->
+  <ng-template #showImage>
+    <img class="object-cover w-full h-full" [src]="selectedBg.image" />
+  </ng-template>
 </section>

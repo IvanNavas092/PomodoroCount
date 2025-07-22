@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { environment } from 'src/environment';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +17,13 @@ export class AppComponent implements OnInit {
     document.addEventListener('fullscreenchange', () => {
       this.isFull = !!document.fullscreenElement;
     });
-  }
 
+    const cld = new Cloudinary({
+      cloud: {
+        cloudName: environment.cloudinary.cloudName
+      }
+    });
+  }
 
   toggleFullscreen() {
     if (!this.isFull) {

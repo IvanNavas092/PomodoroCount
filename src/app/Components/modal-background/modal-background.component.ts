@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, HostListener } from '@angular/core';
 import { Background } from 'src/app/interfaces/background';
 import { ModalBackgroundService } from 'src/app/Services/modal-background.service';
 
@@ -12,17 +12,35 @@ export class ModalBackgroundComponent {
   @Input() isOpen: boolean = false;
   @Input() listOfBgs: Background[] = this.modalBackgroundService.backgrounds$.value;
   @Output() close = new EventEmitter<void>();
+  tabs = ['Settings', 'Backgrounds'];
+  activeTab: string = 'settings';
+
+  @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.closeModal();
+    }
+  }
+
+  // change tab
+  setActiveTab(tab: string) {
+    this.activeTab = tab;
+  }
+
+  // check if tab is active
+  isActiveTab(tab: string) {
+    return this.activeTab === tab;
+  }
 
   closeModal() {
     this.close.emit();
   }
 
-  trackByFn(index: number, item: any): any {
+  trackByFn(item: any): any {
     return item.id;
   }
 
   selectBg(bg: Background) {
     this.modalBackgroundService.selectBackground(bg);
-    this.closeModal();
+    console.log(bg);
   }
 }
