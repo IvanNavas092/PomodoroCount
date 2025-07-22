@@ -1,7 +1,7 @@
 <div
-  class="group bg-white/90 backdrop-blur-sm flex flex-col cursor-pointer items-center justify-center rounded-xl shadow-xl hover:shadow-2xl transition-all duration-50 ease-in-out border border-gray-200 hover:border-gray-300 overflow-hidden"
+  class="group flex flex-col cursor-pointer items-center justify-center rounded-xl shadow-xl hover:shadow-2xl hover:border-gray-300 overflow-hidden min-w-16"
 >
-  <div class="relative overflow-hidden rounded-lg">
+  <div class="relative overflow-hidden rounded-lg w-full">
     <ng-container *ngIf="image; else videoBlock">
       <img
         [src]="image"
@@ -10,7 +10,7 @@
         "
         sizes="(max-width: 640px) 300px, 600px"
         alt="background"
-        class="w-full h-40 object-cover rounded-lg transition-transform duration-50 group-hover:scale-102"
+        class="w-full h-40 object-cover rounded-lg"
         loading="lazy"
       />
     </ng-container>
@@ -27,14 +27,8 @@
         playsinline
       ></video>
     </ng-template>
-    <div
-      class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-all duration-50 rounded-lg"
-    ></div>
   </div>
-  <p class="text-gray-700 font-medium mt-3 text-center text-sm px-2">
+  <p class="text-gray-400 group-hover:text-white font-medium text-center text-sm p-2">
     {{ label }}
   </p>
-  <div
-    class="w-8 h-1 bg-gray-300 rounded-full mt-2 opacity-80 group-hover:opacity-100 transition-opacity"
-  ></div>
 </div>
