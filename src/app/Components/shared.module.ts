@@ -8,6 +8,7 @@ import { ModalBackgroundComponent } from './modal-background/modal-background.co
 import { BoxBgComponent } from './box-bg/box-bg.component';
 import { ModalBackgroundService } from '../Services/modal-background.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SettingsSectionModalComponent } from './modal-background/settings-section-modal/settings-section-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ControlButtonsComponent,
     BgComponent,
     ModalBackgroundComponent,
-    BoxBgComponent
+    BoxBgComponent,
+    SettingsSectionModalComponent
   ],
   imports: [CommonModule, BrowserAnimationsModule],
   exports: [
@@ -25,7 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ControlButtonsComponent,
     BgComponent,
     ModalBackgroundComponent,
-    BoxBgComponent
+    BoxBgComponent,
+    SettingsSectionModalComponent
   ],
   providers: [ModalBackgroundService]
 })

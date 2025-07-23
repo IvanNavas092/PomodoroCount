@@ -1,12 +1,11 @@
 <div
-  class="justify-center items-center bg-slate-900 bg-opacity-90 absolute top-0 left-0 w-full h-full z-10 overflow-y-scroll"
+  class="fixed inset-4 z-10 bg-slate-900 bg-opacity-90 rounded-xl overflow-y-auto p-2 flex flex-col items-center"
 >
   <!-- list -->
-  <button (click)="closeModal()" class="fixed top-0 right-0 p-4">
+  <button (click)="closeModal()" class="fixed top-0 right-0 p-4 m-8">
     <svg
-      class="w-8 h-8 text-gray-800 dark:text-white"
+      class="w-9 h-9 text-gray-800 dark:text-white"
       aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
       fill="none"
@@ -17,7 +16,7 @@
         stroke-linecap="round"
         stroke-linejoin="round"
         stroke-width="2"
-        d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+        d="M6 18 17.94 6M18 18 6.06 6"
       />
     </svg>
   </button>
@@ -25,11 +24,11 @@
   <div class="flex border-b border-gray-700 mt-12 mx-12">
     <button
       *ngFor="let tab of tabs"
-      class="px-4 py-2 font-medium text-sm focus:outline-none"
-      [class.text-blue-400]="isActiveTab(tab)"
+      class="px-4 py-2 font-medium text-sm"
+      [class.text-white]="isActiveTab(tab)"
       [class.text-gray-400]="!isActiveTab(tab)"
       [class.border-b-2]="isActiveTab(tab)"
-      [class.border-blue-400]="isActiveTab(tab)"
+      [class.border-white]="isActiveTab(tab)"
       (click)="setActiveTab(tab)"
     >
       {{ tab }}
@@ -37,7 +36,7 @@
   </div>
 
   <!-- Content -->
-  <div class="m-12">
+  <div class="mt-12 max-h-[90vh] overflow-y-auto w-full">
     <ul
       *ngIf="activeTab === 'Backgrounds'"
       class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 p-4"
@@ -56,7 +55,7 @@
     </ul>
 
     <div *ngIf="activeTab === 'Settings'">
-      <p>Settings</p>
+      <app-settings-section-modal></app-settings-section-modal>
     </div>
   </div>
 </div>
