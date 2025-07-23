@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { fill } from '@cloudinary/url-gen/actions/resize';
 import { quality, format } from '@cloudinary/url-gen/actions/delivery';
 import { Cloudinary } from '@cloudinary/url-gen';
-import { environment } from 'src/environment';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-box-bg',
   templateUrl: './box-bg.component.html'

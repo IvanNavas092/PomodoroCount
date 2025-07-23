@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Cloudinary } from '@cloudinary/url-gen';
-import { environment } from 'src/environment';
+import { environment } from 'src/environments/environment';
 import { ModalBackgroundService } from './Services/modal-background.service';
 @Component({
   selector: 'app-root',
