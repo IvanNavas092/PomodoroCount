@@ -21,7 +21,9 @@ export class BgComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const video = this.videoRef.nativeElement;
-    video.muted = true;
+    if (this.videoRef) {
+      const video = this.videoRef.nativeElement;
+      video.muted = true;
+    }
   }
 }

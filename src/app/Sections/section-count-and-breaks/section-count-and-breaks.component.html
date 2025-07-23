@@ -1,12 +1,18 @@
 <div>
-    <div class="flex flex-col items-center gap-4">
-        <app-button-break [modes]="modes" [selectedMode]="selectedMode"
-            (changeMode)="selectMode($event)"></app-button-break>
-        <app-count [time]="getDisplayTime()"></app-count>
-        <app-control-buttons [isRunning]="isRunning" (start)="startTimer()" (pause)="pauseTimer()"
-            (reset)="resetTimer()">
-        </app-control-buttons>
+  <div class="flex flex-col items-center gap-4">
+    <app-button-break
+      [modes]="modes"
+      [selectedMode]="selectedMode"
+      (changeMode)="selectMode($event)"
+    ></app-button-break>
+    <app-count [time]="getDisplayTime()"></app-count>
+    <app-control-buttons
+      [isRunning]="isRunning"
+      (start)="startTimer()"
+      (pause)="pauseTimer()"
+      (reset)="resetTimer()"
+    ></app-control-buttons>
 
-        <app-settings></app-settings>
-    </div>
+    <app-settings></app-settings>
+  </div>
 </div>

@@ -1,8 +1,6 @@
 import { Component, EventEmitter, Input, Output, HostListener } from '@angular/core';
 import { Background } from 'src/app/interfaces/background';
-import { modeBox } from 'src/app/interfaces/Mode';
 import { ModalBackgroundService } from 'src/app/Services/modal-background.service';
-import { modesList } from 'src/app/utils/lists';
 @Component({
   selector: 'app-modal-background',
   templateUrl: './modal-background.component.html'
