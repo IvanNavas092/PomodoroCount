@@ -40,6 +40,10 @@ export class ModalBackgroundService {
   openModal() {
     this.isOpenSubject.next(true);
   }
+  // check if the modal is open
+  isOpenModal(): boolean {
+    return this.isOpenSubject.value;
+  }
   // close the modal (settings)
   closeModal() {
     this.isOpenSubject.next(false);

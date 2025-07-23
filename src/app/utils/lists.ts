@@ -1,4 +1,5 @@
 import { Background } from '../interfaces/background';
+import { Mode } from '../interfaces/Mode';
 
 export const backgroundsList: Background[] = [
   {
@@ -22,29 +23,29 @@ export const backgroundsList: Background[] = [
     label: 'Night'
   },
   {
-    name: 'vacation',
-    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753192678/t1b0xmaamc7nftywer7x.png',
-    label: 'Vacation'
+    name: 'Anime',
+    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753306319/psp839titviytlzmgscg.jpg',
+    label: 'Anime'
   },
   {
-    name: 'lo-fi',
-    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753192678/t1b0xmaamc7nftywer7x.png',
-    label: 'Lo-Fi	'
+    name: 'Spiderman',
+    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753306319/jp4xuywzemdnkphwdrfk.jpg',
+    label: 'Spiderman'
   },
   {
-    name: 'nature',
-    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753192678/t1b0xmaamc7nftywer7x.png',
-    label: 'Nature'
+    name: 'Gta vi',
+    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753306319/m8hmydcllkayreyewgor.jpg',
+    label: 'GTA VI'
   },
   {
-    name: 'fire',
-    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753192678/t1b0xmaamc7nftywer7x.png',
-    label: 'Fire'
+    name: 'stars',
+    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753306319/cfykf3s1k8jvlw93bhkw.jpg',
+    label: 'Stars'
   },
   {
-    name: 'minimal',
-    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753192678/t1b0xmaamc7nftywer7x.png',
-    label: 'Minimal'
+    name: 'Chill',
+    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753306319/dut6cxv7gejt8rfnrkik.jpg',
+    label: 'Chill'
   },
   {
     name: 'fire',
@@ -116,125 +117,8 @@ export const backgroundsList: Background[] = [
   }
 ];
 
-// selected background
-export const previewBackgroundList: Background[] = [
-  {
-    name: 'focus',
-    image: 'assets/bgs/images/london.jpg',
-    label: 'focus'
-  },
-  {
-    name: 'study',
-    image: 'assets/bgs/images/study.jpg',
-    label: 'Study'
-  },
-  {
-    name: 'chill',
-    image: 'assets/bgs/images/chill.jpg',
-    label: 'Chill'
-  },
-  {
-    name: 'night',
-    image: 'assets/bgs/images/night.jpg',
-    label: 'Night'
-  },
-  {
-    name: 'vacation',
-    image: 'assets/bgs/images/vacation.jpg',
-    label: 'Vacation'
-  },
-  {
-    name: 'lo-fi',
-    image: 'assets/bgs/images/lofi.png',
-    label: 'Lo-Fi	'
-  },
-  {
-    name: 'nature',
-    image: 'assets/bgs/images/nature.jpg',
-    label: 'Nature'
-  },
-  {
-    name: 'fire',
-    image: 'assets/bgs/images/fire.jpg',
-    label: 'Fire'
-  },
-  {
-    name: 'minimal',
-    image: 'assets/bgs/images/minimal.jpg',
-    label: 'Minimal'
-  },
-  {
-    name: 'fire',
-    image: 'assets/bgs/images/fire.jpg',
-    label: 'Fire'
-  },
-  {
-    name: 'cyber',
-    image: 'assets/bgs/images/cyber.jpg',
-    label: 'Cyber'
-  },
-  {
-    name: 'anime',
-    image: 'assets/bgs/images/anime.jpg',
-    label: 'Anime'
-  },
-  {
-    name: 'space',
-    image: 'assets/bgs/images/space.jpg',
-    label: 'Space'
-  },
-  {
-    name: 'space-video',
-    image: '',
-    video: 'assets/bgs/videos/space_video.mp4',
-    label: 'Space'
-  },
-  {
-    name: 'anime-video',
-    image: '',
-    video: 'assets/bgs/videos/anime.mp4',
-    label: 'Anime'
-  },
-  {
-    name: 'bmw-video',
-    image: '',
-    video: 'assets/bgs/videos/bmw.mp4',
-    label: 'bmw-video'
-  },
-  {
-    name: 'calm-night-video',
-    image: '',
-    video: 'assets/bgs/videos/calm-night.mp4',
-    label: 'Calm-night'
-  },
-  {
-    name: 'anime-video',
-    image: '',
-    video: 'assets/bgs/videos/anime.mp4',
-    label: 'anime-video'
-  },
-  {
-    name: 'christmas-video',
-    image: '',
-    video: 'assets/bgs/videos/christmas.mp4',
-    label: 'Christmas'
-  },
-  {
-    name: 'lake-video',
-    image: '',
-    video: 'assets/bgs/videos/lake.mp4',
-    label: 'Lake'
-  },
-  {
-    name: 'mountain-snow-video',
-    image: '',
-    video: 'assets/bgs/videos/mountain-snow.mp4',
-    label: 'Mountain Snow'
-  },
-  {
-    name: 'landscape-anime-video',
-    image: '',
-    video: 'assets/bgs/videos/landscape-anime.mp4',
-    label: 'Landscape'
-  }
+export const modesList: Mode[] = [
+  { label: 'Pomodoro', value: 'pomodoro', minutes: 25 },
+  { label: 'Short break', value: 'short break', minutes: 5 },
+  { label: 'Long break', value: 'long break', minutes: 10 }
 ];

@@ -1,13 +1,25 @@
 <section #fullscreenDiv class="flex justify-center items-center min-h-screen">
-    <div class="z-20">
-        <app-section-count-and-breaks></app-section-count-and-breaks>
-    </div>
-    <!-- Button expand -->
-    <button class="z-20" (click)="toggleFullscreen()">
-        <svg class="w-10 h-10 absolute bottom-0 right-0 m-6 text-gray-800 dark:text-white" aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 8h4V4m12 4h-4V4M4 16h4v4m12-4h-4v4" />
-        </svg>
-    </button>
+  <div class="z-20">
+    <app-section-count-and-breaks></app-section-count-and-breaks>
+  </div>
+  <!-- Button expand -->
+  <button *ngIf="!isOpenModal" class="z-20" (click)="toggleFullscreen()">
+    <svg
+      class="w-10 h-10 absolute bottom-0 right-0 m-6 text-gray-800 dark:text-white"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      width="36"
+      height="36"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 8h4V4m12 4h-4V4M4 16h4v4m12-4h-4v4"
+      />
+    </svg>
+  </button>
 </section>
