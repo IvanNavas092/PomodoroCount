@@ -118,7 +118,7 @@ export const backgroundsList: Background[] = [
 ];
 
 export const modesList: Mode[] = [
-  { label: 'Pomodoro', value: 'pomodoro', minutes: 25 },
-  { label: 'Short break', value: 'short break', minutes: 5 },
-  { label: 'Long break', value: 'long break', minutes: 10 }
+  { label: 'Pomodoro', value: 'pomodoro', minutes: 25, nextMode: 'short-break' },
+  { label: 'Short break', value: 'short-break', minutes: 5, nextMode: 'pomodoro' },
+  { label: 'Long break', value: 'long-break', minutes: 10, nextMode: 'pomodoro' }
 ];

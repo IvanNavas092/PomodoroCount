@@ -11,9 +11,11 @@ export class ButtonBreakComponent {
   @Output() changeMode = new EventEmitter<Mode>();
 
   onSelect(mode: Mode) {
-    this.changeMode.emit(mode);
-    console.log(mode);
-    console.log(this.selectedMode);
+    const updatedMode = {
+      ...mode,
+      minutes: this.selectedMode.value === mode.value ? this.selectedMode.minutes : mode.minutes
+    };
+    this.changeMode.emit(updatedMode);
   }
 
   isSelected(mode: Mode): boolean {
