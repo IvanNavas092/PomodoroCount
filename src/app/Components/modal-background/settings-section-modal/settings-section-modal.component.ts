@@ -6,9 +6,9 @@ import { CountService } from 'src/app/Services/count.service';
   templateUrl: './settings-section-modal.component.html'
 })
 export class SettingsSectionModalComponent {
-  pomodoro: number = 25;
-  short: number = 5;
-  long: number = 10;
+  pomodoro!: number;
+  short!: number;
+  long!: number;
 
   constructor(private countService: CountService) {}
 
