@@ -4,11 +4,13 @@ import { SectionCountAndBreaksComponent } from './section-count-and-breaks/secti
 import { SettingsComponent } from './settings/settings.component';
 import { SharedModule } from '../Components/shared.module';
 import { ModalBackgroundService } from '../Services/modal-background.service';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AllComponent } from './all/all.component';
 
 @NgModule({
-  declarations: [SectionCountAndBreaksComponent, SettingsComponent],
-  imports: [CommonModule, SharedModule],
-  exports: [SectionCountAndBreaksComponent, SettingsComponent],
+  declarations: [SectionCountAndBreaksComponent, SettingsComponent, AllComponent],
+  imports: [CommonModule, SharedModule, AppRoutingModule],
+  exports: [SectionCountAndBreaksComponent, SettingsComponent, AllComponent],
   providers: [ModalBackgroundService]
 })
 export class SectionModule {}

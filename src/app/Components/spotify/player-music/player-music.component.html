@@ -1,0 +1,56 @@
+<div class="fixed bottom-4 right-4 z-50">
+  <!-- Popup del reproductor -->
+  <div
+    *ngIf="currentTrack"
+    class="bg-black bg-opacity-80 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden border border-gray-700 w-64"
+  >
+    <!-- Portada del álbum -->
+    <div class="relative">
+      <img
+        [src]="currentTrack.album.images[0].url"
+        alt="Album cover"
+        class="w-full h-48 object-cover"
+      />
+      <!-- Estado de reproducción (icono flotante) -->
+      <div
+        class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black bg-opacity-30"
+      >
+        <button
+          (click)="togglePlay()"
+          class="p-3 rounded-full bg-spotify-green hover:bg-opacity-90 transition-all"
+        >
+          {{ isPlaying ? '⏸️' : '▶️' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Información de la canción -->
+    <div class="p-4">
+      <div class="flex flex-col space-y-1">
+        <strong class="text-white font-bold truncate">{{ currentTrack.name }}</strong>
+        <small class="text-gray-400 text-sm truncate">{{ getArtistNames() }}</small>
+      </div>
+
+      <!-- Controles -->
+      <div class="flex justify-between items-center mt-4">
+        <button (click)="prevTrack()" class="text-gray-300 hover:text-white transition-colors p-2">
+          ⏮️
+        </button>
+        <button
+          (click)="togglePlay()"
+          class="text-white bg-spotify-green rounded-full p-2 hover:scale-105 transition-transform"
+        >
+          {{ isPlaying ? '⏸️' : '▶️' }}
+        </button>
+        <button (click)="nextTrack()" class="text-gray-300 hover:text-white transition-colors p-2">
+          ⏭️
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estado cuando no hay canción -->
+  <div *ngIf="!currentTrack" class="bg-black bg-opacity-80 text-gray-400 p-4 rounded-xl">
+    No hay canción en reproducción
+  </div>
+</div>
