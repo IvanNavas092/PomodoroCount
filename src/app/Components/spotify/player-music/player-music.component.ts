@@ -16,12 +16,10 @@ export class PlayerMusicComponent implements OnInit {
   player: any;
   deviceId: string = '';
   currentTrack: any = null;
+  volume: number = 0.5;
   isPlaying = false;
 
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private authService: AuthSpotifyService
-  ) {}
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     const token = localStorage.getItem('spotify_token');
@@ -33,7 +31,7 @@ export class PlayerMusicComponent implements OnInit {
         getOAuthToken: (cb: (token: string) => void) => {
           cb(token);
         },
-        volume: 0.5
+        volume: this.volume
       });
 
       player.addListener('player_state_changed', (state: any) => {

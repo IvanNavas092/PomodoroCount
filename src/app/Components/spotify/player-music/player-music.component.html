@@ -136,6 +136,15 @@
         </svg>
       </button>
     </div>
+    <input
+      [(ngModel)]="volume"
+      (change)="player.setVolume(volume)"
+      type="range"
+      min="0"
+      max="1"
+      step="0.01"
+      class="custom-range"
+    />
   </div>
 </div>
 

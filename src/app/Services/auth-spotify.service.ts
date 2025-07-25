@@ -53,7 +53,7 @@ export class AuthSpotifyService {
   }
 
   checkToken() {
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem('spotify_token');
     this.isLoggedIn.next(!!token);
   }
 }
