@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,6 +9,9 @@ export class AuthSpotifyService {
   private clientId = environment.spotify.CLIENT_ID;
   private redirectUri = environment.spotify.REDIRECT_URI;
   private scopes = environment.spotify.SCOPES;
+
+  isLoggedIn = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedIn.asObservable();
 
   async loginWithSpotify(): Promise<void> {
     const codeVerifier = this.generateRandomString(64);
@@ -46,5 +50,10 @@ export class AuthSpotifyService {
       .replace(/\+/g, '-')
       .replace(/\//g, '_')
       .replace(/=+$/, '');
+  }
+
+  checkToken() {
+    const token = localStorage.getItem('access_token');
+    this.isLoggedIn.next(!!token);
   }
 }

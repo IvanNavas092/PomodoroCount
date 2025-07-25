@@ -1,56 +1,145 @@
-<div class="fixed bottom-4 right-4 z-50">
-  <!-- Popup del reproductor -->
-  <div
-    *ngIf="currentTrack"
-    class="bg-black bg-opacity-80 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden border border-gray-700 w-64"
-  >
-    <!-- Portada del álbum -->
-    <div class="relative">
-      <img
-        [src]="currentTrack.album.images[0].url"
-        alt="Album cover"
-        class="w-full h-48 object-cover"
-      />
-      <!-- Estado de reproducción (icono flotante) -->
-      <div
-        class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black bg-opacity-30"
+<!-- player popup -->
+<div
+  *ngIf="currentTrack"
+  class="bg-black bg-opacity-80 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden border border-gray-700 w-64"
+>
+  <!-- album cover -->
+  <div class="relative">
+    <img
+      [src]="currentTrack.album.images[0].url"
+      alt="Album cover"
+      class="w-full h-48 object-cover"
+    />
+    <div
+      class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black bg-opacity-30"
+    >
+      <button
+        (click)="togglePlay()"
+        class="p-3 rounded-full bg-spotify-green hover:bg-opacity-90 transition-all"
       >
-        <button
-          (click)="togglePlay()"
-          class="p-3 rounded-full bg-spotify-green hover:bg-opacity-90 transition-all"
-        >
-          {{ isPlaying ? '⏸️' : '▶️' }}
-        </button>
-      </div>
-    </div>
-
-    <!-- Información de la canción -->
-    <div class="p-4">
-      <div class="flex flex-col space-y-1">
-        <strong class="text-white font-bold truncate">{{ currentTrack.name }}</strong>
-        <small class="text-gray-400 text-sm truncate">{{ getArtistNames() }}</small>
-      </div>
-
-      <!-- Controles -->
-      <div class="flex justify-between items-center mt-4">
-        <button (click)="prevTrack()" class="text-gray-300 hover:text-white transition-colors p-2">
-          ⏮️
-        </button>
-        <button
-          (click)="togglePlay()"
-          class="text-white bg-spotify-green rounded-full p-2 hover:scale-105 transition-transform"
-        >
-          {{ isPlaying ? '⏸️' : '▶️' }}
-        </button>
-        <button (click)="nextTrack()" class="text-gray-300 hover:text-white transition-colors p-2">
-          ⏭️
-        </button>
-      </div>
+        <ng-container *ngIf="!isPlaying; else pauseIcon">
+          <!-- Play icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6 text-white"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"
+            />
+          </svg>
+        </ng-container>
+        <ng-template #pauseIcon>
+          <!-- Pause icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6 text-white"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8 5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H8Zm7 0a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1Z"
+            />
+          </svg>
+        </ng-template>
+      </button>
     </div>
   </div>
 
-  <!-- Estado cuando no hay canción -->
-  <div *ngIf="!currentTrack" class="bg-black bg-opacity-80 text-gray-400 p-4 rounded-xl">
-    No hay canción en reproducción
+  <!-- infomation of the song -->
+  <div class="p-4">
+    <div class="flex flex-col space-y-1">
+      <strong class="text-white font-bold truncate">{{ currentTrack.name }}</strong>
+      <small class="text-gray-400 text-sm truncate">{{ getArtistNames() }}</small>
+    </div>
+
+    <!-- controls -->
+    <div class="flex justify-between items-center mt-4">
+      <!-- Prev -->
+      <button
+        (click)="prevTrack()"
+        class="text-gray-300 hover:text-white transition-colors p-2"
+        title="Anterior"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          viewBox="0 0 24 24"
+        >
+          <polygon points="19 20 9 12 19 4 19 20"></polygon>
+          <line x1="5" y1="19" x2="5" y2="5"></line>
+        </svg>
+      </button>
+
+      <!-- Play/Pause -->
+      <button
+        (click)="togglePlay()"
+        class="text-white bg-spotify-green rounded-full p-2 hover:scale-105 transition-transform"
+        title="Play/Pause"
+      >
+        <ng-container *ngIf="!isPlaying; else playingIcon">
+          <!-- Play icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6 text-white"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"
+            />
+          </svg>
+        </ng-container>
+        <ng-template #playingIcon>
+          <!-- Pause icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6 text-white"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8 5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H8Zm7 0a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1Z"
+            />
+          </svg>
+        </ng-template>
+      </button>
+
+      <!-- Next -->
+      <button
+        (click)="nextTrack()"
+        class="text-gray-300 hover:text-white transition-colors p-2"
+        title="Siguiente"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          viewBox="0 0 24 24"
+        >
+          <polygon points="5 4 15 12 5 20 5 4"></polygon>
+          <line x1="19" y1="5" x2="19" y2="19"></line>
+        </svg>
+      </button>
+    </div>
   </div>
+</div>
+
+<!-- no song -->
+<div *ngIf="!currentTrack" class="bg-black bg-opacity-80 text-gray-400 p-4 rounded-xl">
+  No hay canción en reproducción
 </div>

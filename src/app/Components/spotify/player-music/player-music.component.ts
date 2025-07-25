@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AuthSpotifyService } from 'src/app/Services/auth-spotify.service';
 
 declare global {
   interface Window {
@@ -17,7 +18,10 @@ export class PlayerMusicComponent implements OnInit {
   currentTrack: any = null;
   isPlaying = false;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private authService: AuthSpotifyService
+  ) {}
 
   ngOnInit(): void {
     const token = localStorage.getItem('spotify_token');
