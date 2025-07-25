@@ -48,24 +48,24 @@ export const backgroundsList: Background[] = [
     label: 'Chill'
   },
   {
-    name: 'fire',
-    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753192678/t1b0xmaamc7nftywer7x.png',
-    label: 'Fire'
+    name: 'asbtract',
+    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753464841/bmzviwovfdvhmlu2ytin.jpg',
+    label: 'Abstract'
   },
   {
-    name: 'cyber',
-    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753192678/t1b0xmaamc7nftywer7x.png',
-    label: 'Cyber'
+    name: 'hot-air',
+    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753464841/ghruobea8mzcyap6py6x.jpg',
+    label: 'Hot-air'
   },
   {
-    name: 'anime',
-    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753192678/t1b0xmaamc7nftywer7x.png',
-    label: 'Anime'
+    name: 'transformer',
+    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753464842/fy9zyoo2tni0soluzowd.jpg',
+    label: 'Transformer'
   },
   {
-    name: 'space',
-    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753192678/t1b0xmaamc7nftywer7x.png',
-    label: 'Space'
+    name: 'astronaut',
+    image: 'https://res.cloudinary.com/dglx7uc1t/image/upload/v1753464842/ndo7bekhszlmablifkl6.jpg',
+    label: 'Astronaut'
   },
   {
     name: 'anime-video',
@@ -74,10 +74,10 @@ export const backgroundsList: Background[] = [
     label: 'Anime'
   },
   {
-    name: 'bmw-video',
+    name: 'particles',
     image: '',
-    video: 'https://res.cloudinary.com/dglx7uc1t/video/upload/v1753192683/y20wyncesfiazwrecqiy.mp4',
-    label: 'bmw-video'
+    video: 'https://res.cloudinary.com/dglx7uc1t/video/upload/v1753464788/ry6e6nhia9auwqp4bmor.mp4',
+    label: 'Particles'
   },
   {
     name: 'calm-night-video',
@@ -86,10 +86,10 @@ export const backgroundsList: Background[] = [
     label: 'Calm-night'
   },
   {
-    name: 'anime-video',
+    name: 'particles-red',
     image: '',
-    video: 'https://res.cloudinary.com/dglx7uc1t/video/upload/v1753192685/p0ejngal4uyl1i3f6k7n.mp4',
-    label: 'Anime'
+    video: 'https://res.cloudinary.com/dglx7uc1t/video/upload/v1753464789/kxqzw8qjhfriozqgrysb.mp4',
+    label: 'Particles-red'
   },
   {
     name: 'christmas-video',
