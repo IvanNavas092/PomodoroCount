@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +10,14 @@ import { CloudinaryModule } from '@cloudinary/ng';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, SectionModule, CloudinaryModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    SectionModule,
+    CloudinaryModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
