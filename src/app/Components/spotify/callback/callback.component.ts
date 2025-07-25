@@ -27,7 +27,7 @@ export class CallbackComponent implements OnInit {
       .set('client_id', '8a3f3c699a324421b023cd845ef8aa4a')
       .set('grant_type', 'authorization_code')
       .set('code', code)
-      .set('redirect_uri', 'https://pomodorocount.netlify.app/callback')
+      .set('redirect_uri', 'https://23fa1bc99e52.ngrok-free.app/callback')
       .set('code_verifier', codeVerifier);
 
     const headers = new HttpHeaders({

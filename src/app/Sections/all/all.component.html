@@ -1,11 +1,11 @@
 <section #fullscreenDiv class="flex justify-center items-center min-h-screen">
-  <div class="z-20">
+  <div class="z-10">
     <app-section-count-and-breaks></app-section-count-and-breaks>
   </div>
   <!-- Button expand -->
-  <button *ngIf="!isOpenModal" class="z-20" (click)="toggleFullscreen()">
+  <button *ngIf="!isOpenModal" class="z-10" (click)="toggleFullscreen()">
     <svg
-      class="w-10 h-10 absolute bottom-0 right-0 m-6 text-gray-800 dark:text-white"
+      class="w-1 0 h-10 absolute bottom-0 right-0 m-6 text-gray-800 dark:text-white"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       width="36"
@@ -23,10 +23,10 @@
     </svg>
   </button>
 
-  <!-- quiero que esto sea visible cuando no esté logueado, pero pasa algo, mira AllComponent, service, callback -->
-  <p class="text-white text-center text-2xl z-20">is logged in: {{ isLoggedIn | async }}</p>
-  <div *ngIf="!isLoggedIn" class="z-30 absolute bottom-0 left-0 m-6">
-    <app-button-spotify></app-button-spotify>
-    <p class="text-white">BOTÓN DEBERÍA VERSE</p>
+  <div class="z-10 absolute bottom-0 left-0 m-6">
+    <app-button-spotify *ngIf="!(isLoggedIn | async)"></app-button-spotify>
+    <app-player-music *ngIf="isLoggedIn | async"></app-player-music>
   </div>
+
+  <app-settings></app-settings>
 </section>
